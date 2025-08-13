@@ -52,13 +52,15 @@ export default function Portfolio() {
         {portfolioItems.map((item, idx) => (
           <div
             key={idx}
-            className={`bg-black border border-neutral-800 p-3 ${idx % 2 !== 0 ? 'md:mt-16' : ''}`}
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full mb-4"
-            />
+            className={`bg-black border border-neutral-800 p-3 ${idx % 2 !== 0 ? 'sm:mt-8' : ''} ${idx % 3 !== 0 ? 'md:mt-16' : ''}`}>
+            <div className="relative group overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full mb-4"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-4 bg-white bg-opacity-30 transition-all duration-500 ease-in-out group-hover:top-1/3 group-hover:h-1/3"></div>
+            </div>
             <div className="text-sm text-gray-400">{item.year} ↗</div>
             <h3 className="text-lg font-bold leading-tight">{item.title}</h3>
           </div>
@@ -67,3 +69,4 @@ export default function Portfolio() {
     </section>
   );
 }
+

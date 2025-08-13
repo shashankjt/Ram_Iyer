@@ -37,3 +37,39 @@
 .read-the-docs {
   color: #888;
 }
+
+/* For the blur + overlay reveal effect */
+.image-blur-reveal-container {
+  position: relative;
+  overflow: hidden;
+  display: block; /* Ensures it takes up space */
+}
+
+.image-blur-reveal-container img {
+  display: block; /* Remove extra space below image */
+  width: 100%;
+  height: auto;
+  filter: blur(5px); /* Initial blur */
+  transition: filter 0.5s ease-in-out; /* Smooth transition for blur */
+}
+
+.image-blur-reveal-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white overlay */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition for overlay */
+  transform-origin: center center; /* Ensure scaling is from center */
+}
+
+.image-blur-reveal-container:hover img {
+  filter: blur(0); /* Remove blur on hover */
+}
+
+.image-blur-reveal-container:hover::before {
+  transform: scaleY(0.2); /* Shrink vertically to a band (20% of original height) */
+  opacity: 0.5; /* Adjust opacity of the band if needed */
+}
